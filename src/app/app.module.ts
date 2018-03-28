@@ -4,15 +4,26 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { ChuckJokesComponent } from './chuck-jokes/chuck-jokes.component';
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent,
+    ChuckJokesComponent
+],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    EffectsModule.forRoot([AppEffects]),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [AppComponent]
