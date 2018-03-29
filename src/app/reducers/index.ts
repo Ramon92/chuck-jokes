@@ -8,6 +8,10 @@ import {
 import { environment } from '../../environments/environment';
 import * as fromJokes from './jokes.reducer';
 
+export interface Action {
+  readonly type: string;
+  readonly payload?: any;
+}
 export interface State {
   jokes: fromJokes.State;
 }
