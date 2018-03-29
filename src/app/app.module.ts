@@ -13,6 +13,7 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ChuckJokesComponent } from './chuck-jokes/chuck-jokes.component';
+import { ChuckJokesService } from './chuck-jokes/chuck-jokes.service';
 
 const appRoutes: Routes = [
   { path: 'chuck-jokes', component: ChuckJokesComponent, pathMatch: 'full' },
@@ -26,11 +27,11 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes, { enableTracing: environment.production }),
-    EffectsModule.forRoot([AppEffects]),
     StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([AppEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [],
+  providers: [ChuckJokesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
