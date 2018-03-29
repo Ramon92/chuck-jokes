@@ -1,3 +1,4 @@
+import { JokeHeaderComponent } from './chuck-jokes/joke-header/joke-header.component';
 import { JokeComponent } from './chuck-jokes/joke/joke.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -21,7 +22,12 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ChuckJokesComponent, JokeComponent],
+  declarations: [
+    AppComponent,
+    ChuckJokesComponent,
+    JokeComponent,
+    JokeHeaderComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,

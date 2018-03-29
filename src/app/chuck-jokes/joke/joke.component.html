@@ -1,3 +1,5 @@
-<li class="joke">
-  {{joke}}
-</li>
+<div class="joke">
+  <p>{{joke.joke}}</p>
+  <button (click)="addFavourite.emit()"
+          type="button">add to favourite</button>
+</div>

@@ -8,8 +8,8 @@ export interface Joke {
 }
 
 export interface State {
-  readonly favourites: Joke[];
-  readonly jokes: Joke[];
+  readonly favourites: Array<Joke>;
+  readonly jokes: any;
   readonly isLoading: boolean;
   readonly error: boolean;
 }

@@ -13,12 +13,12 @@ export class AppEffects {
   jokes$: Observable<Action> = this.actions$.pipe(
     ofType(fromJokesActions.JokesActionTypes.GET_JOKES),
     switchMap(() =>
-      this.chuckjokesService
-        .getJokes()
-        .pipe(
-          map(data => new fromJokesActions.GetJokesSuccess(data)),
-          catchError(error => of(new fromJokesActions.GetJokesFailed()))
-        )
+      this.chuckjokesService.getJokes().pipe(
+        map(data => {
+          return new fromJokesActions.GetJokesSuccess(data);
+        }),
+        catchError(error => of(new fromJokesActions.GetJokesFailed()))
+      )
     )
   );
 
@@ -27,7 +27,7 @@ export class AppEffects {
     ofType(fromJokesActions.JokesActionTypes.GET_JOKE),
     switchMap(() =>
       this.chuckjokesService
-        .getJokes()
+        .getJoke()
         .pipe(
           map(data => new fromJokesActions.GetJokeSuccess(data)),
           catchError(error => of(new fromJokesActions.GetJokeFailed()))

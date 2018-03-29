@@ -1,0 +1,15 @@
+$white: #fff;
+.jokeHeader {
+    width: 100%;
+    max-width: 400px;
+    background: $white;
+    padding: 10px 30px 20px;
+    margin: auto;
+    h2 {
+        text-align: center;
+    }
+    &__buttons {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}

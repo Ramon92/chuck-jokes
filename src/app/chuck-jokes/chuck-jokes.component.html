@@ -1,0 +1,9 @@
+<div class="jokes">
+  <app-joke-header (getJokes)="getJokes()"
+                   (getJoke)="getJoke()"></app-joke-header>
+  <div class="jokes__list"
+       *ngIf="currentState.jokes">
+    <app-joke *ngFor="let joke of currentState.jokes"
+              [joke]="joke"></app-joke>
+  </div>
+</div>

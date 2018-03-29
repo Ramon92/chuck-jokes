@@ -19,7 +19,7 @@ export class GetJokes implements Action {
 export class GetJokesSuccess implements Action {
   readonly type = JokesActionTypes.GET_JOKES_SUCCESS;
 
-  constructor(payload: any) {}
+  constructor(public payload: any) {}
 }
 
 export class GetJokesFailed implements Action {
@@ -33,7 +33,7 @@ export class GetJoke implements Action {
 export class GetJokeSuccess implements Action {
   readonly type = JokesActionTypes.GET_JOKE_SUCCESS;
 
-  constructor(payload: any) {}
+  constructor(public payload: any) {}
 }
 
 export class GetJokeFailed implements Action {
@@ -43,13 +43,13 @@ export class GetJokeFailed implements Action {
 export class RemoveJoke implements Action {
   readonly type = JokesActionTypes.REMOVE_JOKE;
 
-  constructor(payload: number) {}
+  constructor(public payload: number) {}
 }
 
 export class AddJoke implements Action {
   readonly type = JokesActionTypes.ADD_JOKE;
 
-  constructor(payload: Joke) {}
+  constructor(public payload: Joke) {}
 }
 
 export type JokesActions =
