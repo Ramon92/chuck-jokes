@@ -1,3 +1,4 @@
+import { AuthGuardService } from './login/authGuard.service';
 import { JokeFavouritesComponent } from './chuck-jokes/joke-favourites/joke-favourites.component';
 import { JokeFavouriteComponent } from './chuck-jokes/joke-favourites/joke-favourite/joke-favourite.component';
 import { JokeHeaderComponent } from './chuck-jokes/joke-header/joke-header.component';
@@ -20,9 +21,14 @@ import { ChuckJokesService } from './chuck-jokes/chuck-jokes.service';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
-  { path: 'chuck-jokes', component: ChuckJokesComponent, pathMatch: 'full' },
+  {
+    path: 'chuck-jokes',
+    component: ChuckJokesComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuardService]
+  },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -44,7 +50,7 @@ const appRoutes: Routes = [
     EffectsModule.forRoot([AppEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [ChuckJokesService],
+  providers: [ChuckJokesService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
