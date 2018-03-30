@@ -1,0 +1,23 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    padding: 10px 30px 20px;
+    margin: auto;
+    min-height: 200px;
+    justify-content: center;
+    label {
+        margin-bottom: 15px;
+    }
+    input {
+        margin-bottom: 30px;
+        padding: 10px 15px;
+        border-radius: 4px;
+        border: solid 1px #a5a5a5;
+        &:active {
+            border: solid 1px #757575;
+        }
+    }
+}

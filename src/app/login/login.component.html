@@ -1,7 +1,8 @@
 <form #loginForm="ngForm"
       (ngSubmit)="onLogin(loginForm.value)">
   <label for="password">Password</label>
-  <input type="password"
+  <input autofocus
+         type="password"
          name="password"
          id="password"
          placeholder="password"

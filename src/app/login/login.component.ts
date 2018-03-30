@@ -12,7 +12,12 @@ export class LoginComponent implements OnInit {
   public password: string;
   constructor(private loginService: LoginService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const loginSession = sessionStorage.getItem('loggedIn');
+    if (loginSession && loginSession === 'true') {
+      this.router.navigate(['/chuck-jokes']);
+    }
+  }
 
   onLogin(form) {
     if (this.loginService.isPasswordValid(form.password)) {
