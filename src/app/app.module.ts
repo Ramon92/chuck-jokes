@@ -1,3 +1,5 @@
+import { JokeFavouritesComponent } from './chuck-jokes/joke-favourites/joke-favourites.component';
+import { JokeFavouriteComponent } from './chuck-jokes/joke-favourites/joke-favourite/joke-favourite.component';
 import { JokeHeaderComponent } from './chuck-jokes/joke-header/joke-header.component';
 import { JokeComponent } from './chuck-jokes/joke/joke.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,10 +17,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ChuckJokesComponent } from './chuck-jokes/chuck-jokes.component';
 import { ChuckJokesService } from './chuck-jokes/chuck-jokes.service';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: 'chuck-jokes', component: ChuckJokesComponent, pathMatch: 'full' },
-  { path: '', redirectTo: '/chuck-jokes', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
@@ -26,7 +30,10 @@ const appRoutes: Routes = [
     AppComponent,
     ChuckJokesComponent,
     JokeComponent,
-    JokeHeaderComponent
+    JokeHeaderComponent,
+    JokeFavouriteComponent,
+    JokeFavouritesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

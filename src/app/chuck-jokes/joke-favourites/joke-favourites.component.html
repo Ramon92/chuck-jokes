@@ -1,0 +1,9 @@
+<div class="favourites">
+  <h2>Favourite Jokes</h2>
+  <div class="favourites__container">
+    <app-joke-favourite class="favourites__item"
+                        *ngFor="let favourite of favourites"
+                        (remove)="remove.emit(favourite.id)"
+                        [favourite]="favourite"></app-joke-favourite>
+  </div>
+</div>

@@ -4,6 +4,10 @@ $grey: #eee;
 $white: #fff;
 $button-color: rgb(225, 0, 80);
 $button-color-hover: rgb(157, 0, 56);
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #eee;
     font-family: 'Roboto'

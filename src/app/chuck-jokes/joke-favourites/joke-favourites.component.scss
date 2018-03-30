@@ -1,0 +1,18 @@
+.favourites {
+    background: #ffffff;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 400px;
+    h2 {
+        padding: 20px 0;
+        text-align: center;
+        margin: 0;
+    }
+    &__container {
+         ::ng-deep app-joke-favourite {
+            div {
+                border-bottom: 3px solid grey;
+            }
+        }
+    }
+}

@@ -1,9 +1,17 @@
 <div class="jokes">
-  <app-joke-header (getJokes)="getJokes()"
-                   (getJoke)="getJoke()"></app-joke-header>
-  <div class="jokes__list"
-       *ngIf="currentState.jokes">
-    <app-joke *ngFor="let joke of currentState.jokes"
-              [joke]="joke"></app-joke>
+  <div class="jokes__favourites">
+    <app-joke-favourites (remove)="removeJoke($event)"
+                         [favourites]="currentState.favourites">
+    </app-joke-favourites>
+  </div>
+  <div class="jokes__container">
+    <app-joke-header (getJokes)="getJokes()"
+                     (getJoke)="toggleJoke()"></app-joke-header>
+    <div class="jokes__list"
+         *ngIf="currentState.jokes">
+      <app-joke *ngFor="let joke of currentState.jokes"
+                [joke]="joke"
+                (addJoke)="addFavourite(joke)"></app-joke>
+    </div>
   </div>
 </div>

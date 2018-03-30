@@ -6,8 +6,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./joke-header.component.scss']
 })
 export class JokeHeaderComponent implements OnInit {
-  @Output() getJokes: EventEmitter<any> = new EventEmitter();
-  @Output() getJoke: EventEmitter<any> = new EventEmitter();
+  @Output() public getJokes: EventEmitter<any> = new EventEmitter();
+  @Output() public getJoke: EventEmitter<any> = new EventEmitter();
 
   constructor() {}
 

@@ -15,8 +15,8 @@ export interface State {
 }
 
 export const initialState: State = {
-  favourites: undefined,
-  jokes: undefined,
+  favourites: [],
+  jokes: [],
   isLoading: false,
   error: false
 };
@@ -31,10 +31,23 @@ export function reducer(state = initialState, action: Action): State {
       };
 
     case JokesActionTypes.GET_JOKES_SUCCESS:
-    case JokesActionTypes.GET_JOKE_SUCCESS:
       return {
         ...state,
         isLoading: false,
+        jokes: action.payload.value
+      };
+
+    case JokesActionTypes.GET_JOKE_SUCCESS:
+      const hasjoke =
+        state.favourites.filter(item => item.id === action.payload.value[0].id)
+          .length > 0;
+      const jokeList = !hasjoke
+        ? [...state.favourites, action.payload.value[0]]
+        : [...state.favourites];
+      return {
+        ...state,
+        isLoading: false,
+        favourites: jokeList,
         jokes: action.payload.value
       };
 
@@ -56,7 +69,12 @@ export function reducer(state = initialState, action: Action): State {
       };
 
     case JokesActionTypes.ADD_JOKE:
-      const newList = [...state.favourites, action.payload];
+      const hasItem =
+        state.favourites.filter(item => item.id === action.payload.id).length >
+        0;
+      const newList = !hasItem
+        ? [...state.favourites, action.payload]
+        : [...state.favourites];
       return {
         ...state,
         favourites: newList

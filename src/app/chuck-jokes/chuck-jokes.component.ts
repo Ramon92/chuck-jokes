@@ -3,6 +3,8 @@ import * as fromJokes from './../reducers/jokes.reducer';
 import { State } from './../reducers/index';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { interval } from 'rxjs/observable/interval';
+import { Subscription } from 'rxjs/Subscription';
 @Component({
   selector: 'app-chuck-jokes',
   templateUrl: './chuck-jokes.component.html',
@@ -10,6 +12,8 @@ import { Store } from '@ngrx/store';
 })
 export class ChuckJokesComponent implements OnInit {
   public currentState: fromJokes.State;
+  private toggleSub: Subscription;
+  private jokeToggle: any = false;
 
   constructor(private store: Store<State>) {}
 
@@ -25,7 +29,27 @@ export class ChuckJokesComponent implements OnInit {
     this.store.dispatch(new fromJokesActions.GetJokes());
   }
 
-  getJoke() {
-    this.store.dispatch(new fromJokesActions.GetJoke());
+  toggleJoke() {
+    this.jokeToggle = !this.jokeToggle;
+
+    if (this.jokeToggle) {
+      this.toggleSub = interval(5000).subscribe(() => {
+        if (this.currentState.favourites.length < 10) {
+          this.store.dispatch(new fromJokesActions.GetJoke());
+        }
+      });
+    } else {
+      this.toggleSub.unsubscribe();
+    }
+  }
+
+  removeJoke(id) {
+    this.store.dispatch(new fromJokesActions.RemoveJoke(id));
+  }
+
+  addFavourite(joke) {
+    if (this.currentState.favourites.length < 10) {
+      this.store.dispatch(new fromJokesActions.AddJoke(joke));
+    }
   }
 }
